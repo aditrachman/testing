@@ -24,10 +24,16 @@
             <div class="lock-bg-gradient"></div>
         </div>
 
+        <!-- Romantic petals -->
+        <div class="petals-canvas" id="lock-petals"></div>
+        <!-- Glow effect -->
+        <div class="lock-glow"></div>
+
         <div class="lock-content">
             <div class="lock-top">
                 <div id="lock-time" class="lock-time">00:00</div>
                 <div id="lock-date" class="lock-date">Senin, 1 Januari</div>
+                <div class="lock-romantic-line">hari yang tepat untuk diingat</div>
             </div>
 
             <div class="lock-bottom">
@@ -51,6 +57,7 @@
             <div class="pin-header">
                 <p class="pin-label">Masukkan kode</p>
                 <p class="pin-sublabel">Kamu pasti tahu ini.</p>
+                <p class="pin-romantic-quote">seperti cara kamu tahu<br />hal-hal kecil yang berarti ✦</p>
             </div>
 
             <div class="pin-dots">
@@ -84,6 +91,8 @@
   ═══════════════════════════════════════ -->
     <div id="letter-screen" class="screen">
         <div class="letter-bg"></div>
+        <!-- Floating hearts background -->
+        <div class="floating-hearts" id="letter-hearts"></div>
 
         <div class="letter-wrapper">
             <div class="envelope-container" id="envelope-container">
@@ -156,13 +165,24 @@
         <!-- ── HERO ── -->
         <section class="hero-section">
             <div class="hero-bg">
-                <img src="assets/hero.jpg" alt="" class="hero-img" onerror="this.style.display='none'" />
+                <div class="hero-orb hero-orb-1"></div>
+                <div class="hero-orb hero-orb-2"></div>
+                <div class="hero-orb hero-orb-3"></div>
+                <img src="assets/hero.jpg" alt="" class="hero-img" />
                 <div class="hero-overlay"></div>
             </div>
             <div class="hero-content">
                 <p class="hero-eyebrow">Selamat Ulang Tahun</p>
-                <h1 class="hero-name">Sayang</h1>
+                <div class="hero-name-wrap">
+                    <h1 class="hero-name">Sayang</h1>
+                </div>
+                <p class="hero-tagline">semoga hari ini menjadi milikmu seutuhnya</p>
                 <p class="hero-date" id="hero-date"></p>
+                <div class="hero-dots">
+                    <div class="hero-dot"></div>
+                    <div class="hero-dot"></div>
+                    <div class="hero-dot"></div>
+                </div>
             </div>
             <div class="hero-scroll-hint">
                 <span>↓</span>
@@ -177,40 +197,57 @@
             </div>
 
             <div class="gallery-grid">
-                <!-- Each card has a placeholder bg; replace src with real photos -->
-                <div class="gallery-card card-tall" style="--delay:0s">
+                <div class="gallery-card" style="--delay:0s">
                     <div class="polaroid">
-                        <img src="assets/photo1.jpg" alt="" onerror="this.parentElement.classList.add('no-photo')" />
+                        <div class="polaroid-img-wrap">
+                            <img src="assets/photo1.jpg" alt=""
+                                onerror="this.closest('.polaroid').classList.add('no-photo')" />
+                        </div>
                         <div class="polaroid-caption">Foto ini masih jadi favoritku.</div>
                     </div>
                 </div>
-                <div class="gallery-card card-wide" style="--delay:0.1s">
+                <div class="gallery-card" style="--delay:0.08s">
                     <div class="polaroid">
-                        <img src="assets/photo2.jpg" alt="" onerror="this.parentElement.classList.add('no-photo')" />
+                        <div class="polaroid-img-wrap">
+                            <img src="assets/photo2.jpg" alt=""
+                                onerror="this.closest('.polaroid').classList.add('no-photo')" />
+                        </div>
                         <div class="polaroid-caption">Hari itu ternyata lebih seru dari yang aku ingat.</div>
                     </div>
                 </div>
-                <div class="gallery-card card-square" style="--delay:0.15s">
+                <div class="gallery-card" style="--delay:0.16s">
                     <div class="polaroid">
-                        <img src="assets/photo3.jpg" alt="" onerror="this.parentElement.classList.add('no-photo')" />
+                        <div class="polaroid-img-wrap">
+                            <img src="assets/photo3.jpg" alt=""
+                                onerror="this.closest('.polaroid').classList.add('no-photo')" />
+                        </div>
                         <div class="polaroid-caption">Kamu paling cantik waktu tidak sadar difoto.</div>
                     </div>
                 </div>
-                <div class="gallery-card card-square" style="--delay:0.2s">
+                <div class="gallery-card" style="--delay:0.22s">
                     <div class="polaroid">
-                        <img src="assets/photo4.jpg" alt="" onerror="this.parentElement.classList.add('no-photo')" />
+                        <div class="polaroid-img-wrap">
+                            <img src="assets/photo4.jpg" alt=""
+                                onerror="this.closest('.polaroid').classList.add('no-photo')" />
+                        </div>
                         <div class="polaroid-caption">Momen ini ada di kepala aku lebih lama dari yang kukira.</div>
                     </div>
                 </div>
-                <div class="gallery-card card-tall" style="--delay:0.25s">
+                <div class="gallery-card" style="--delay:0.28s">
                     <div class="polaroid">
-                        <img src="assets/photo5.jpg" alt="" onerror="this.parentElement.classList.add('no-photo')" />
+                        <div class="polaroid-img-wrap">
+                            <img src="assets/photo5.jpg" alt=""
+                                onerror="this.closest('.polaroid').classList.add('no-photo')" />
+                        </div>
                         <div class="polaroid-caption">Senang bisa ada di sini bersamamu.</div>
                     </div>
                 </div>
-                <div class="gallery-card card-wide" style="--delay:0.3s">
+                <div class="gallery-card" style="--delay:0.34s">
                     <div class="polaroid">
-                        <img src="assets/photo6.jpg" alt="" onerror="this.parentElement.classList.add('no-photo')" />
+                        <div class="polaroid-img-wrap">
+                            <img src="assets/photo6.jpg" alt=""
+                                onerror="this.closest('.polaroid').classList.add('no-photo')" />
+                        </div>
                         <div class="polaroid-caption">Ini salah satu hari yang aku simpan baik-baik.</div>
                     </div>
                 </div>
@@ -226,27 +263,27 @@
 
             <div class="things-grid">
                 <div class="thing-card" style="--delay:0s">
-                    <div class="thing-icon">✦</div>
+                    <div class="thing-icon">01 ✦</div>
                     <p>Cara kamu tertawa waktu sesuatu benar-benar lucu—bukan yang pura-pura, tapi yang asli.</p>
                 </div>
                 <div class="thing-card" style="--delay:0.08s">
-                    <div class="thing-icon">✦</div>
+                    <div class="thing-icon">02 ✦</div>
                     <p>Cara kamu cerita sesuatu dengan semangat, sampai matamu ikut bicara.</p>
                 </div>
                 <div class="thing-card" style="--delay:0.16s">
-                    <div class="thing-icon">✦</div>
+                    <div class="thing-icon">03 ✦</div>
                     <p>Cara kamu selalu punya pendapat sendiri, bahkan untuk hal-hal kecil.</p>
                 </div>
                 <div class="thing-card" style="--delay:0.24s">
-                    <div class="thing-icon">✦</div>
+                    <div class="thing-icon">04 ✦</div>
                     <p>Cara kamu bikin hari yang biasa terasa sedikit lebih menyenangkan dari biasanya.</p>
                 </div>
                 <div class="thing-card" style="--delay:0.32s">
-                    <div class="thing-icon">✦</div>
+                    <div class="thing-icon">05 ✦</div>
                     <p>Cara kamu diam waktu lagi berpikir—tenang, tapi kelihatan banget lagi ke mana-mana.</p>
                 </div>
                 <div class="thing-card" style="--delay:0.4s">
-                    <div class="thing-icon">✦</div>
+                    <div class="thing-icon">06 ✦</div>
                     <p>Cara kamu tetap jadi kamu, di situasi apapun. Itu yang paling aku kagumi.</p>
                 </div>
             </div>

@@ -106,6 +106,64 @@ setInterval(updateClock, 1000);
 
 
 /* ═══════════════════════════════════════════════
+   ROMANTIC PARTICLES
+═══════════════════════════════════════════════ */
+function createPetals(containerId, count = 14) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const colors = [
+    'rgba(201,132,122,0.5)',
+    'rgba(232,196,190,0.5)',
+    'rgba(196,168,130,0.4)',
+    'rgba(201,132,122,0.3)',
+  ];
+
+  for (let i = 0; i < count; i++) {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+    const size = 5 + Math.random() * 8;
+    petal.style.cssText = `
+      left: ${Math.random() * 100}%;
+      width: ${size}px;
+      height: ${size}px;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      animation-duration: ${6 + Math.random() * 8}s;
+      animation-delay: ${Math.random() * 8}s;
+      border-radius: ${Math.random() > 0.5 ? '50% 0 50% 0' : '0 50% 0 50%'};
+    `;
+    container.appendChild(petal);
+  }
+}
+
+function createFloatingHearts(containerId, count = 10) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const hearts = ['♡', '♥', '✦', '✿'];
+
+  for (let i = 0; i < count; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'fheart';
+    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    const hue = Math.random() > 0.5 ? 'var(--rose)' : 'var(--rose-light)';
+    heart.style.cssText = `
+      left: ${Math.random() * 100}%;
+      font-size: ${10 + Math.random() * 10}px;
+      color: ${hue};
+      animation-duration: ${8 + Math.random() * 10}s;
+      animation-delay: ${Math.random() * 6}s;
+    `;
+    container.appendChild(heart);
+  }
+}
+
+// Init particles on load
+createPetals('lock-petals', 16);
+createFloatingHearts('letter-hearts', 12);
+
+
+/* ═══════════════════════════════════════════════
    LOCK SCREEN → PIN
 ═══════════════════════════════════════════════ */
 document.getElementById('lock-screen').addEventListener('click', () => {
@@ -311,12 +369,13 @@ function initGallery() {
 
   document.querySelectorAll('.polaroid').forEach((card, i) => {
     card.addEventListener('click', () => {
-      const src = card.querySelector('img')?.src;
+      const imgEl = card.querySelector('img');
+      const src = imgEl?.src;
       const cap = card.querySelector('.polaroid-caption')?.textContent || '';
 
       if (!src || card.classList.contains('no-photo')) return;
 
-      lbImg.src          = src;
+      lbImg.src             = src;
       lbCaption.textContent = cap;
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
