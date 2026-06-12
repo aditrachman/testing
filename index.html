@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Untuk Kamu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════
+       SCREEN 1: LOCK SCREEN
+  ═══════════════════════════════════════ -->
+    <div id="lock-screen" class="screen active">
+        <div class="lock-bg">
+            <img src="assets/bg.jpg" alt="" class="lock-bg-img" onerror="this.style.display='none'" />
+            <div class="lock-bg-gradient"></div>
+        </div>
+
+        <div class="lock-content">
+            <div class="lock-top">
+                <div id="lock-time" class="lock-time">00:00</div>
+                <div id="lock-date" class="lock-date">Senin, 1 Januari</div>
+            </div>
+
+            <div class="lock-bottom">
+                <div class="lock-hint">
+                    <div class="lock-dot-ring">
+                        <div class="lock-dot-pulse"></div>
+                    </div>
+                    <span>Sentuh untuk membuka</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       SCREEN 2: PIN SCREEN
+  ═══════════════════════════════════════ -->
+    <div id="pin-screen" class="screen">
+        <div class="pin-bg"></div>
+
+        <div class="pin-content">
+            <div class="pin-header">
+                <p class="pin-label">Masukkan kode</p>
+                <p class="pin-sublabel">Kamu pasti tahu ini.</p>
+            </div>
+
+            <div class="pin-dots">
+                <div class="pin-dot" data-index="0"></div>
+                <div class="pin-dot" data-index="1"></div>
+                <div class="pin-dot" data-index="2"></div>
+                <div class="pin-dot" data-index="3"></div>
+            </div>
+
+            <div id="pin-error" class="pin-error">Belum tepat.</div>
+
+            <div class="pin-keypad">
+                <button class="pin-key" data-num="1">1</button>
+                <button class="pin-key" data-num="2">2</button>
+                <button class="pin-key" data-num="3">3</button>
+                <button class="pin-key" data-num="4">4</button>
+                <button class="pin-key" data-num="5">5</button>
+                <button class="pin-key" data-num="6">6</button>
+                <button class="pin-key" data-num="7">7</button>
+                <button class="pin-key" data-num="8">8</button>
+                <button class="pin-key" data-num="9">9</button>
+                <div class="pin-key-empty"></div>
+                <button class="pin-key" data-num="0">0</button>
+                <button class="pin-key pin-key-delete" id="pin-delete">⌫</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       SCREEN 3: LETTER
+  ═══════════════════════════════════════ -->
+    <div id="letter-screen" class="screen">
+        <div class="letter-bg"></div>
+
+        <div class="letter-wrapper">
+            <div class="envelope-container" id="envelope-container">
+                <!-- Envelope -->
+                <div class="envelope" id="envelope">
+                    <div class="envelope-flap" id="envelope-flap"></div>
+                    <div class="envelope-body">
+                        <div class="envelope-seal">✦</div>
+                    </div>
+                </div>
+                <p class="envelope-hint">Buka suratnya</p>
+            </div>
+
+            <!-- Letter Content -->
+            <div class="letter-content" id="letter-content">
+                <div class="letter-paper">
+                    <div class="letter-decor">✦</div>
+                    <p class="letter-greeting">Hei,</p>
+                    <div class="letter-body">
+                        <p>Selamat ulang tahun.</p>
+                        <p>Aku bikin ini bukan karena aku harus, tapi karena aku mau. Hari ini rasanya tepat untuk bikin
+                            sesuatu yang bisa kamu buka, dan semoga ketika kamu buka, kamu senyum sedikit—sekecil apapun
+                            itu.</p>
+                        <p>Terima kasih sudah jadi bagian dari banyak hari yang aku lewati. Bukan karena semuanya
+                            sempurna, tapi karena bersamamu, hal-hal biasa punya rasa yang sedikit berbeda. Dan aku
+                            senang merasakannya bersamamu.</p>
+                    </div>
+                    <div class="letter-signature">
+                        <p>Dengan sayang,</p>
+                        <p class="signature-name">Untukmu ✦</p>
+                    </div>
+                    <button class="letter-cta" id="letter-next-btn">Lanjut →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       SCREEN 4: TRANSITION
+  ═══════════════════════════════════════ -->
+    <div id="transition-screen" class="screen">
+        <div class="transition-bg"></div>
+        <div class="transition-content">
+            <div class="transition-loader">
+                <div class="loader-ring"></div>
+            </div>
+            <p class="transition-text">Mempersiapkan sesuatu…</p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+       SCREEN 5 onwards: MAIN CONTENT
+  ═══════════════════════════════════════ -->
+    <div id="main-content" class="screen">
+
+        <!-- Music Control -->
+        <div class="music-control" id="music-control">
+            <button id="music-btn" class="music-btn" aria-label="Toggle music">
+                <span class="music-icon" id="music-icon">♪</span>
+                <span class="music-bars" id="music-bars">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+        </div>
+
+        <audio id="bg-music" loop>
+            <source src="assets/music.mp3" type="audio/mpeg" />
+        </audio>
+
+        <!-- ── HERO ── -->
+        <section class="hero-section">
+            <div class="hero-bg">
+                <img src="assets/hero.jpg" alt="" class="hero-img" onerror="this.style.display='none'" />
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <p class="hero-eyebrow">Selamat Ulang Tahun</p>
+                <h1 class="hero-name">Sayang</h1>
+                <p class="hero-date" id="hero-date"></p>
+            </div>
+            <div class="hero-scroll-hint">
+                <span>↓</span>
+            </div>
+        </section>
+
+        <!-- ── GALLERY ── -->
+        <section class="gallery-section">
+            <div class="section-header">
+                <p class="section-eyebrow">Momen</p>
+                <h2 class="section-title">Potongan kecil<br /><em>dari yang kita punya</em></h2>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Each card has a placeholder bg; replace src with real photos -->
+                <div class="gallery-card card-tall" style="--delay:0s">
+                    <div class="polaroid">
+                        <img src="assets/photo1.jpg" alt="" onerror="this.parentElement.classList.add('no-photo')" />
+                        <div class="polaroid-caption">Foto ini masih jadi favoritku.</div>
+                    </div>
+                </div>
+                <div class="gallery-card card-wide" style="--delay:0.1s">
+                    <div class="polaroid">
+                        <img src="assets/photo2.jpg" alt="" onerror="this.parentElement.classList.add('no-photo')" />
+                        <div class="polaroid-caption">Hari itu ternyata lebih seru dari yang aku ingat.</div>
+                    </div>
+                </div>
+                <div class="gallery-card card-square" style="--delay:0.15s">
+                    <div class="polaroid">
+                        <img src="assets/photo3.jpg" alt="" onerror="this.parentElement.classList.add('no-photo')" />
+                        <div class="polaroid-caption">Kamu paling cantik waktu tidak sadar difoto.</div>
+                    </div>
+                </div>
+                <div class="gallery-card card-square" style="--delay:0.2s">
+                    <div class="polaroid">
+                        <img src="assets/photo4.jpg" alt="" onerror="this.parentElement.classList.add('no-photo')" />
+                        <div class="polaroid-caption">Momen ini ada di kepala aku lebih lama dari yang kukira.</div>
+                    </div>
+                </div>
+                <div class="gallery-card card-tall" style="--delay:0.25s">
+                    <div class="polaroid">
+                        <img src="assets/photo5.jpg" alt="" onerror="this.parentElement.classList.add('no-photo')" />
+                        <div class="polaroid-caption">Senang bisa ada di sini bersamamu.</div>
+                    </div>
+                </div>
+                <div class="gallery-card card-wide" style="--delay:0.3s">
+                    <div class="polaroid">
+                        <img src="assets/photo6.jpg" alt="" onerror="this.parentElement.classList.add('no-photo')" />
+                        <div class="polaroid-caption">Ini salah satu hari yang aku simpan baik-baik.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SMALL THINGS ── -->
+        <section class="things-section">
+            <div class="section-header">
+                <p class="section-eyebrow">Hal kecil</p>
+                <h2 class="section-title">Yang selalu aku<br /><em>perhatikan darimu</em></h2>
+            </div>
+
+            <div class="things-grid">
+                <div class="thing-card" style="--delay:0s">
+                    <div class="thing-icon">✦</div>
+                    <p>Cara kamu tertawa waktu sesuatu benar-benar lucu—bukan yang pura-pura, tapi yang asli.</p>
+                </div>
+                <div class="thing-card" style="--delay:0.08s">
+                    <div class="thing-icon">✦</div>
+                    <p>Cara kamu cerita sesuatu dengan semangat, sampai matamu ikut bicara.</p>
+                </div>
+                <div class="thing-card" style="--delay:0.16s">
+                    <div class="thing-icon">✦</div>
+                    <p>Cara kamu selalu punya pendapat sendiri, bahkan untuk hal-hal kecil.</p>
+                </div>
+                <div class="thing-card" style="--delay:0.24s">
+                    <div class="thing-icon">✦</div>
+                    <p>Cara kamu bikin hari yang biasa terasa sedikit lebih menyenangkan dari biasanya.</p>
+                </div>
+                <div class="thing-card" style="--delay:0.32s">
+                    <div class="thing-icon">✦</div>
+                    <p>Cara kamu diam waktu lagi berpikir—tenang, tapi kelihatan banget lagi ke mana-mana.</p>
+                </div>
+                <div class="thing-card" style="--delay:0.4s">
+                    <div class="thing-icon">✦</div>
+                    <p>Cara kamu tetap jadi kamu, di situasi apapun. Itu yang paling aku kagumi.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FINAL MESSAGE ── -->
+        <section class="final-section">
+            <div class="final-content">
+                <div class="final-divider"></div>
+                <p class="final-text">Selamat bertambah usia.</p>
+                <p class="final-sub">Semoga tahun ini membawa banyak hal baik buat kamu. Dan semoga kamu tetap jadi
+                    orang yang sama yang selama ini aku kenal dan sayangi.</p>
+                <div class="final-heart">❤️</div>
+            </div>
+        </section>
+
+    </div><!-- /main-content -->
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-overlay" id="lightbox-overlay"></div>
+        <div class="lightbox-inner">
+            <img src="" alt="" id="lightbox-img" />
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+            <button class="lightbox-close" id="lightbox-close">×</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
