@@ -304,7 +304,21 @@
                     <div class="final-closing-line"></div>
                     <span class="final-closing-text">dengan sepenuh hati ✦</span>
                 </div>
-                <div class="final-heart">❤️</div>
+                <button class="final-gift" id="final-gift-btn" aria-label="Buka hadiah">
+                    <div class="gift-box">
+                        <div class="gift-lid">
+                            <div class="gift-ribbon-h"></div>
+                            <div class="gift-bow">
+                                <div class="gift-bow-left"></div>
+                                <div class="gift-bow-right"></div>
+                            </div>
+                        </div>
+                        <div class="gift-body">
+                            <div class="gift-ribbon-v"></div>
+                        </div>
+                    </div>
+                    <p class="gift-hint">Buka hadiahnya ✦</p>
+                </button>
             </div>
         </section>
 
@@ -317,6 +331,24 @@
             <img src="" alt="" id="lightbox-img" />
             <p id="lightbox-caption" class="lightbox-caption"></p>
             <button class="lightbox-close" id="lightbox-close">×</button>
+        </div>
+    </div>
+
+    <!-- Gift Photo Modal -->
+    <div id="gift-modal" class="gift-modal">
+        <div class="gift-modal-overlay" id="gift-modal-overlay"></div>
+        <div class="gift-modal-inner">
+            <div class="gift-modal-sparkles" id="gift-sparkles"></div>
+            <div class="gift-modal-photo-wrap">
+                <img src="assets/gift-photo.png" alt="Hadiah untukmu" id="gift-photo-img"
+                    onerror="this.src=''; this.closest('.gift-modal-photo-wrap').classList.add('no-photo')" />
+                <div class="gift-modal-no-photo-msg">
+                    <span>🎁</span>
+                    <p>Foto spesial untukmu</p>
+                </div>
+            </div>
+            <p class="gift-modal-caption">Karena kamu layak mendapat sesuatu yang istimewa. Selamat ulang tahun ✦</p>
+            <button class="gift-modal-close" id="gift-modal-close">×</button>
         </div>
     </div>
 

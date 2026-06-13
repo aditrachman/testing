@@ -458,3 +458,59 @@ function startMusic() {
    LOCK SCREEN — active on load
 ═══════════════════════════════════════════════ */
 document.getElementById('lock-screen').classList.add('active');
+
+
+/* ═══════════════════════════════════════════════
+   GIFT MODAL — klik kado → buka foto
+═══════════════════════════════════════════════ */
+function spawnSparkles(container) {
+  const colors = ['#C27A73','#DFB5AF','#C4A882','#F2E0DC','#A85E58','#E8DDD6'];
+  const count = 16;
+  for (let i = 0; i < count; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'gift-sparkle-dot';
+    const size = 4 + Math.random() * 8;
+    const angle = (i / count) * 360;
+    const dist = 40 + Math.random() * 60;
+    const rad = angle * Math.PI / 180;
+    const tx = Math.cos(rad) * dist;
+    const ty = Math.sin(rad) * dist;
+    dot.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      top: 50%;
+      left: 50%;
+      --tx: translate(${tx}px, ${ty}px);
+      animation-delay: ${Math.random() * 0.15}s;
+    `;
+    container.appendChild(dot);
+    setTimeout(() => dot.remove(), 1000);
+  }
+}
+
+function openGiftModal() {
+  const modal = document.getElementById('gift-modal');
+  const sparklesEl = document.getElementById('gift-sparkles');
+  if (!modal) return;
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Spawn sparkles effect
+  if (sparklesEl) spawnSparkles(sparklesEl);
+}
+
+function closeGiftModal() {
+  const modal = document.getElementById('gift-modal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('final-gift-btn')?.addEventListener('click', openGiftModal);
+document.getElementById('gift-modal-overlay')?.addEventListener('click', closeGiftModal);
+document.getElementById('gift-modal-close')?.addEventListener('click', closeGiftModal);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeGiftModal();
+});
